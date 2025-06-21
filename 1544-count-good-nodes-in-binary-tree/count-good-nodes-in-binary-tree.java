@@ -17,16 +17,16 @@ class Solution {
     public int goodNodes(TreeNode root) {
         return helper(root,0,Integer.MIN_VALUE);
     }
-    public int helper(TreeNode root ,int ans , int mx){
+    public int helper(TreeNode root ,int ans , int max){
         if(root==null) return 0;
         int rootans = 0 ;
-        if(root.val>=mx){
-            mx=root.val;
+        if(root.val>=max){
+            max=root.val;
             rootans = 1;
         }
-        int leftans = helper(root.left , ans , mx);
-        int rightans = helper(root.right ,ans ,mx);
-        ans= rightans+leftans+rootans ; 
+        int left = helper(root.left , ans , max);
+        int right = helper(root.right ,ans ,max);
+        ans= right+left+rootans ; 
         return ans ; 
     }
 }
